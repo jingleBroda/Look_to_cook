@@ -34,4 +34,5 @@ _____
 10. Open URL Recipe: Chrome Custom Tabs
 
 ## Privacy policy
-To read the app's privacy policy, click <a href="privacy_policy.html">here</a>.
+To read the app's privacy policy, click [here](privacy_policy.md)
+
