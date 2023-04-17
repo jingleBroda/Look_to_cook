@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/alter_grey">
+
+    <View
+        android:id="@+id/topBoarderRecipeItem"
+        android:layout_width="0dp"
+        android:layout_height="16dp"
+        android:background="@color/alterGreen"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_recipe_top_boarder" />
+
+    <TextView
+        android:id="@+id/nameRecipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/topBoarderRecipeItem"
+        app:layout_constraintTop_toBottomOf="@+id/topBoarderRecipeItem"
+        tools:text="Peking duck" />
+
+    <LinearLayout
+        android:id="@+id/ingredientRecipeVIewLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="16dp"
+        app:layout_constraintStart_toStartOf="@+id/nameRecipe"
+        app:layout_constraintTop_toBottomOf="@+id/nameRecipe">
+
+        <ImageView
+            android:id="@+id/ingredientPreviewImg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_count_product_recipe" />
+
+        <TextView
+            android:id="@+id/countIngredient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="8dp"
+            android:textColor="@color/black"
+
+            android:textSize="20sp"
+            tools:text="15" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/kcalRecipeViewLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="16dp"
+        app:layout_constraintStart_toEndOf="@+id/ingredientRecipeVIewLayout"
+        app:layout_constraintTop_toTopOf="@+id/ingredientRecipeVIewLayout">
+
+        <ImageView
+            android:id="@+id/kcalPreviewImg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_kcal" />
+
+        <TextView
+            android:id="@+id/countKcal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="8dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            tools:text="1850" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/showRecipeButton"
+        style="@style/AppDefaultButtonsStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/looking_recipe_string"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/kcalRecipeViewLayout"
+        app:layout_constraintEnd_toEndOf="@+id/topBoarderRecipeItem"
+        app:layout_constraintStart_toEndOf="@+id/kcalRecipeViewLayout"
+        app:layout_constraintTop_toTopOf="@+id/kcalRecipeViewLayout" />
+
+    <LinearLayout
+        android:id="@+id/mainInfoRecipeViewLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kcalRecipeViewLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="4dp"
+            android:layout_weight="0.3"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/recipePreviewImg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/carbMarkerImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tint="@color/yellow"
+                    app:layout_constraintEnd_toEndOf="@+id/carbCount"
+                    app:layout_constraintStart_toStartOf="@+id/carbCount"
+                    app:layout_constraintTop_toTopOf="@+id/proteinMarkerImg"
+                    app:srcCompat="@drawable/ic__circle_16_dp" />
+
+                <TextView
+                    android:id="@+id/proteinCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="10000"
+                    android:textColor="@color/darkGrey"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/fatCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10000"
+                    android:textColor="@color/darkGrey"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toStartOf="@+id/carbCount"
+                    app:layout_constraintStart_toEndOf="@+id/proteinCount"
+                    app:layout_constraintTop_toTopOf="@+id/proteinCount" />
+
+                <TextView
+                    android:id="@+id/carbCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="10000"
+                    android:textColor="@color/darkGrey"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/proteinCount" />
+
+                <TextView
+                    android:id="@+id/proteinConstString"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/protein_string"
+                    android:textColor="@color/darkGrey"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/proteinMarkerImg"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/carbConstString"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/carb_string"
+                    android:textColor="@color/darkGrey"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/proteinConstString"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/proteinConstString" />
+
+                <TextView
+                    android:id="@+id/fatConstString"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/fat_string"
+                    android:textColor="@color/darkGrey"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/proteinConstString"
+                    app:layout_constraintEnd_toStartOf="@+id/carbMarkerImg"
+                    app:layout_constraintStart_toEndOf="@+id/proteinMarkerImg"
+                    app:layout_constraintTop_toTopOf="@+id/proteinConstString" />
+
+                <ImageView
+                    android:id="@+id/fatMarkerImg"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tint="@color/red"
+                    app:layout_constraintEnd_toEndOf="@+id/fatCount"
+                    app:layout_constraintStart_toStartOf="@+id/fatCount"
+                    app:layout_constraintTop_toTopOf="@+id/proteinMarkerImg"
+                    app:srcCompat="@drawable/ic__circle_16_dp" />
+
+                <ImageView
+                    android:id="@+id/proteinMarkerImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:tint="@color/green"
+                    app:layout_constraintBottom_toTopOf="@+id/proteinCount"
+                    app:layout_constraintEnd_toEndOf="@+id/proteinCount"
+                    app:layout_constraintStart_toStartOf="@+id/proteinCount"
+                    app:srcCompat="@drawable/ic__circle_16_dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:background="@drawable/black_stroke_background">
+
+            <TextView
+                android:id="@+id/ingredientListTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:gravity="center"
+                android:text="@string/list_ingredient_string"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ListView
+                android:id="@+id/ingredientsRecView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/white"
+                android:divider="@null"
+                app:layout_constraintBottom_toTopOf="@+id/deatilsConcreteRecipe"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ingredientListTitle"
+                tools:listitem="@layout/ingredients_item_view">
+
+            </ListView>
+
+            <Button
+                android:id="@+id/deatilsConcreteRecipe"
+                style="@style/AppDefaultButtonsStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="@color/grey"
+                android:text="@string/details_string"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/bottomBoarderRecipeItem"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainInfoRecipeViewLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

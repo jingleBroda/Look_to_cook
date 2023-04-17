@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Look to cook</string>
+    <string name="open_second_fragment">Open Second Screen</string>
+    <string name="exit_button">Exit</string>
+    <string name="protein_string">Proteion</string>
+    <string name="fat_string">Fat</string>
+    <string name="carb_string">Carb</string>
+    <string name="default_weight_string">0 mg</string>
+    <string name="kcal_string">kcal</string>
+    <string name="example_number_string" translatable="false">1000</string>
+    <string name="details_string"><u>Details…</u></string>
+    <string name="looking_recipe_string">Recipe</string>
+    <string name="servings_string">Servings:</string>
+    <string name="empty_recipe_string">At the moment, the list of recipes is empty. Please enter in the search bar the ingredient you are interested in for the recipes.</string>
+    <string name="list_ingredient_string">Ingredient List</string>
+    <string name="nutrients_string">Nutrients</string>
+    <string name="main_screen_string_1">What would\n\you cook?</string>
+    <string name="main_screen_string_2">After you take the products, we will offer you recipes for dishes that can be prepared from them.</string>
+    <string name="search_string">Let\'\s Search?</string>
+    <string name="example_range_ingridient">Chicken, Onion, Garlic</string>
+    <string name="product_list_string">Your product list</string>
+    <string name="bottom_search_recipe_string">Enter products separated by commas</string>
+    <string name="for_recipes_string">For recipes!</string>
+    <string name="enumeration_symbol" translatable="false">•</string>
+    <string name="search_screen_title">Search Recipe</string>
+    <string name="show_recipe_screen_title">Result recipe</string>
+    <string name="bad_search_recipe_string">Search recipe error, plz try other combination ingredients</string>
+    <string name="ingredient_string">Ingredient</string>
+    <string name="copy_text_string">Screen text copied successfully. When opening the translator, just copy the text in the English language field.</string>
+</resources>
