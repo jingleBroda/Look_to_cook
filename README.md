@@ -32,3 +32,6 @@ _____
 8. API Translate Words: https://mymemory.translated.net/doc/spec.php
 9. Download Image: Glide
 10. Open URL Recipe: Chrome Custom Tabs
+
+## Privacy policy
+To read the app's privacy policy, click <a href="privacy_policy.html">here</a>.
