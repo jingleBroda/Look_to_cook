@@ -1,4 +1,4 @@
-# Privacy policy Look to cookie.
+# Privacy policy Look to cook.
 
 I, JingleBroda, respect the privacy of the users of our Look to cook app. In this privacy statement, I want to explain what data users collect, how they collect it, and how they protect it.
 
