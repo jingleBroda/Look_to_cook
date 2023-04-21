@@ -27,4 +27,5 @@
     <string name="bad_search_recipe_string">Search recipe error, plz try other combination ingredients</string>
     <string name="ingredient_string">Ingredient</string>
     <string name="copy_text_string">Screen text copied successfully. When opening the translator, just copy the text in the English language field.</string>
+    <string name="internet_connection_error_string">Oops, it seems like you have no internet connection. Please try accessing the application later!</string>
 </resources>

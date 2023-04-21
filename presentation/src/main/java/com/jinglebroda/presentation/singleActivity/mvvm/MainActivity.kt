@@ -1,21 +1,20 @@
 package com.jinglebroda.presentation.singleActivity.mvvm
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.jinglebroda.presentation.R
 import com.jinglebroda.presentation.databinding.ActivityMainBinding
-import com.jinglebroda.presentation.singleActivity.mvvm.activityContract.Navigator
-import com.jinglebroda.presentation.singleActivity.mvvm.activityContract.destinationId
-import com.jinglebroda.presentation.singleActivity.mvvm.activityContract.launchDestination
-import com.jinglebroda.presentation.singleActivity.mvvm.activityContract.launchDestinationNotAddToBackStack
+import com.jinglebroda.presentation.singleActivity.mvvm.activityContract.*
 
-class MainActivity : AppCompatActivity(), Navigator {
+class MainActivity : AppCompatActivity(), Navigator, InternetConnection {
     private lateinit var binding:ActivityMainBinding
     private lateinit var navController:NavController
+    private lateinit var networkConnectivityChecker:NetworkConnectivityChecker
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +24,7 @@ class MainActivity : AppCompatActivity(), Navigator {
         ) as NavHostFragment
         navController = navHost.navController
         NavigationUI.setupActionBarWithNavController(this,navController)
+        networkConnectivityChecker = NetworkConnectivityChecker(this)
         setContentView(binding.root)
     }
 
@@ -48,4 +48,17 @@ class MainActivity : AppCompatActivity(), Navigator {
     }
 
     override fun back() = onBackPressed()
+
+    override fun isInternetConnected(): Boolean = networkConnectivityChecker.isInternetConnected()
+
+    override fun onStart() {
+        networkConnectivityChecker.startListening()
+        super.onStart()
+    }
+
+    override fun onStop() {
+        networkConnectivityChecker.stopListening()
+        super.onStop()
+    }
+
 }

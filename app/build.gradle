@@ -5,6 +5,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('D:\\Android Studio key app folder\\key_store\\upload-keystore.jks')
+            storePassword 'slark13377'
+            keyAlias 'look_to_cook_upload'
+            keyPassword 'slark13377'
+        }
+    }
     compileSdk 32
 
     defaultConfig {

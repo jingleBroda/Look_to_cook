@@ -12,6 +12,7 @@ import com.jinglebroda.domain.model.searchRecipeModel.Hits
 import com.jinglebroda.domain.model.translateWordModel.TranslateWordResponse
 import com.jinglebroda.presentation.R
 import com.jinglebroda.presentation.databinding.FragmentSearchRecipeBinding
+import com.jinglebroda.presentation.singleActivity.mvvm.activityContract.internetConnection
 import com.jinglebroda.presentation.singleActivity.mvvm.activityContract.navigator
 import com.jinglebroda.presentation.singleActivity.mvvm.fragment.searchRecipe.handlers.SearchProcessingHandler
 import com.jinglebroda.presentation.singleActivity.mvvm.fragment.searchRecipe.viewModel.SearchRecipeFragmentViewModel
@@ -94,26 +95,35 @@ class SearchRecipeFragment : BaseFragment(R.layout.fragment_search_recipe) {
     override fun onClick(v: View) {
         when(v.id){
             R.id.searchRecipeButton->{
-                if(binding.inputFieldIngredients.text.isNotEmpty()){
-                    val recipe = binding.inputFieldIngredients.text.toString()
-                    for(i in recipe){
-                        if( LetterRusAndEngLanguage.isEnglishLetter(i)){
-                            //если символ англ. делаем поиск запроса сразу
-                            Log.d("testFirsLetterRecipe", "En")
-                            searchHandler.hideButton()
-                            viewModel.searchRecipe(recipe)
-                            break
-                        }
-                        else{
-                            if(LetterRusAndEngLanguage.isRussianLetter(i)){
-                                //если на русском, считаем, что поиск идет на русском языке, значит переводим вводимый текст на англ и только потом делаем поиск
-                                Log.d("testFirsLetterRecipe", "Ru")
+                if(internetConnection().isInternetConnected()){
+                    if(binding.inputFieldIngredients.text.isNotEmpty()){
+                        val recipe = binding.inputFieldIngredients.text.toString()
+                        for(i in recipe){
+                            if( LetterRusAndEngLanguage.isEnglishLetter(i)){
+                                //если символ англ. делаем поиск запроса сразу
+                                Log.d("testFirsLetterRecipe", "En")
                                 searchHandler.hideButton()
-                                viewModel.translateWord(recipe)
+                                viewModel.searchRecipe(recipe)
                                 break
+                            }
+                            else{
+                                if(LetterRusAndEngLanguage.isRussianLetter(i)){
+                                    //если на русском, считаем, что поиск идет на русском языке, значит переводим вводимый текст на англ и только потом делаем поиск
+                                    Log.d("testFirsLetterRecipe", "Ru")
+                                    searchHandler.hideButton()
+                                    viewModel.translateWord(recipe)
+                                    break
+                                }
                             }
                         }
                     }
+                }
+                else{
+                    Toast.makeText(
+                        requireContext(),
+                        requireContext().getString(R.string.internet_connection_error_string),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }

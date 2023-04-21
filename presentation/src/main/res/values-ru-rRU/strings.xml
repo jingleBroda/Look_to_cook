@@ -26,4 +26,5 @@
     <string name="bad_search_recipe_string">"Ошибка поиска рецептов, попробуйте использовтаь другую комбинацию ингредиентов "</string>
     <string name="ingredient_string">Ингредиент</string>
     <string name="copy_text_string">Текст экрана успешно скопирован. При открытии переводчика, просто скопируйте текст в поле английского языка.</string>
+    <string name="internet_connection_error_string">Упс, похоже у вас отсутствует подключение к интернету. Попробуйте зайти в приложение позднее!</string>
 </resources>
