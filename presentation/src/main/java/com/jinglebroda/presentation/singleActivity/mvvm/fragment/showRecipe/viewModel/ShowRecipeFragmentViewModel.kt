@@ -2,8 +2,9 @@ package com.jinglebroda.presentation.singleActivity.mvvm.fragment.showRecipe.vie
 
 import androidx.lifecycle.viewModelScope
 import com.jinglebroda.domain.model.searchRecipeModel.Hits
+import com.jinglebroda.domain.model.searchRecipeModel.advancedSearchGetParams.AdvancedSearchGetParams
 import com.jinglebroda.domain.model.translateWordModel.TranslateWordResponse
-import com.jinglebroda.domain.usecase.ApiSearchUseCase
+import com.jinglebroda.domain.usecase.ApiDefaultSearchUseCase
 import com.jinglebroda.domain.usecase.TranslateWordUseCase
 import com.jinglebroda.presentation.singleActivity.mvvm.utils.transPair.TransPair
 import kotlinx.coroutines.cancel
@@ -15,7 +16,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class ShowRecipeFragmentViewModel @Inject constructor(
-    private val apiSearchUseCase:ApiSearchUseCase,
+    private val apiDefaultSearchUseCase:ApiDefaultSearchUseCase,
     private val translateUseCase:TranslateWordUseCase
 ):BaseShowRecipeFragmentViewModel() {
     private val _searchFlow:MutableStateFlow<Hits> = MutableStateFlow(Hits.generateEmptyHits())
@@ -25,9 +26,9 @@ class ShowRecipeFragmentViewModel @Inject constructor(
         MutableStateFlow(TranslateWordResponse.createEmptyResponse())
     val translateFlow:StateFlow<TranslateWordResponse> = _translateFlow.asStateFlow()
 
-    override fun searchRecipe(nameRecipe: String) {
+    override fun searchRecipe(getParams: AdvancedSearchGetParams) {
         viewModelScope.launch {
-            val searchResult = apiSearchUseCase.invoke(nameRecipe)
+            val searchResult = apiDefaultSearchUseCase.invoke(getParams)
             _searchFlow.emit(searchResult.await())
         }
     }

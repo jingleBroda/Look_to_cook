@@ -14,7 +14,12 @@ import com.jinglebroda.presentation.R
 import com.jinglebroda.presentation.databinding.FragmentSearchRecipeBinding
 import com.jinglebroda.presentation.singleActivity.mvvm.activityContract.internetConnection
 import com.jinglebroda.presentation.singleActivity.mvvm.activityContract.navigator
-import com.jinglebroda.presentation.singleActivity.mvvm.fragment.searchRecipe.handlers.SearchProcessingHandler
+import com.jinglebroda.presentation.singleActivity.mvvm.fragment.searchRecipe.dialog.AdvancedSearchSettingsDialog
+import com.jinglebroda.presentation.singleActivity.mvvm.fragment.searchRecipe.dialog.closeDialogListener.AdvancedSearchSettingsDialogCloseListener
+import com.jinglebroda.presentation.singleActivity.mvvm.fragment.searchRecipe.dialog.dataAdvancedSearch.DataAdvancedSearch
+import com.jinglebroda.presentation.singleActivity.mvvm.fragment.searchRecipe.dialog.dataAdvancedSearch.DataAdvancedSearchParcelize
+import com.jinglebroda.presentation.singleActivity.mvvm.fragment.searchRecipe.utils.handlers.SearchProcessingHandler
+import com.jinglebroda.presentation.singleActivity.mvvm.fragment.searchRecipe.utils.requestPacker.SearchRecipeRequestPacker
 import com.jinglebroda.presentation.singleActivity.mvvm.fragment.searchRecipe.viewModel.SearchRecipeFragmentViewModel
 import com.jinglebroda.presentation.singleActivity.mvvm.fragment.showRecipe.ShowRecipeFragmentArgs
 import com.jinglebroda.presentation.singleActivity.mvvm.utils.baseUiClasses.BaseFragment
@@ -25,12 +30,20 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class SearchRecipeFragment : BaseFragment(R.layout.fragment_search_recipe) {
+class SearchRecipeFragment : BaseFragment(R.layout.fragment_search_recipe),
+    AdvancedSearchSettingsDialogCloseListener {
     @Inject
     lateinit var viewModelFactory:ViewModelFactory
     private lateinit var viewModel: SearchRecipeFragmentViewModel
     private lateinit var binding: FragmentSearchRecipeBinding
     private lateinit var searchHandler: SearchProcessingHandler
+    private var advancedSettingSearch:DataAdvancedSearch? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        advancedSettingSearch = savedInstanceState?.getParcelable<DataAdvancedSearchParcelize>(
+            keyAdvancedSettingSearch)?.getDataAdvancedSearch()
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding = FragmentSearchRecipeBinding.bind(view)
@@ -40,10 +53,12 @@ class SearchRecipeFragment : BaseFragment(R.layout.fragment_search_recipe) {
         )[SearchRecipeFragmentViewModel::class.java]
         searchHandler = SearchProcessingHandler.Base(
             binding.progressBar,
-            binding.searchRecipeButton
+            binding.searchRecipeButton,
+            binding.customizeSearchTitle
         )
         with(binding){
             searchRecipeButton.setOnClickListener(this@SearchRecipeFragment)
+            customizeSearchTitle.setOnClickListener(this@SearchRecipeFragment)
 
             inputFieldIngredients.setHorizontallyScrolling(false)
             inputFieldIngredients.maxLines = Integer.MAX_VALUE
@@ -73,6 +88,7 @@ class SearchRecipeFragment : BaseFragment(R.layout.fragment_search_recipe) {
                                 ),
                                 Toast.LENGTH_SHORT
                             ).show()
+                            navigator().back()
                         }
                     }
                 }
@@ -80,10 +96,13 @@ class SearchRecipeFragment : BaseFragment(R.layout.fragment_search_recipe) {
 
             viewLifecycleOwner.lifecycleScope.launch {
                 viewModel.translateFlow.collect{ translateResponse->
-                    Log.d("www", translateResponse.toString())
                     if(translateResponse != TranslateWordResponse.createEmptyResponse()){
+                        val requestPacker = SearchRecipeRequestPacker.Base(
+                            translateResponse.responseData.translatedText,
+                            advancedSettingSearch
+                        )
                         viewModel.searchRecipe(
-                            translateResponse.responseData.translatedText
+                            requestPacker.getRequest()
                         )
                     }
                 }
@@ -97,13 +116,19 @@ class SearchRecipeFragment : BaseFragment(R.layout.fragment_search_recipe) {
             R.id.searchRecipeButton->{
                 if(internetConnection().isInternetConnected()){
                     if(binding.inputFieldIngredients.text.isNotEmpty()){
-                        val recipe = binding.inputFieldIngredients.text.toString()
-                        for(i in recipe){
+                        val ingredients = binding.inputFieldIngredients.text.toString()
+                        for(i in ingredients){
                             if( LetterRusAndEngLanguage.isEnglishLetter(i)){
                                 //если символ англ. делаем поиск запроса сразу
                                 Log.d("testFirsLetterRecipe", "En")
                                 searchHandler.hideButton()
-                                viewModel.searchRecipe(recipe)
+                                val requestPacker = SearchRecipeRequestPacker.Base(
+                                    ingredients,
+                                    advancedSettingSearch
+                                )
+                                viewModel.searchRecipe(
+                                    requestPacker.getRequest()
+                                )
                                 break
                             }
                             else{
@@ -111,7 +136,7 @@ class SearchRecipeFragment : BaseFragment(R.layout.fragment_search_recipe) {
                                     //если на русском, считаем, что поиск идет на русском языке, значит переводим вводимый текст на англ и только потом делаем поиск
                                     Log.d("testFirsLetterRecipe", "Ru")
                                     searchHandler.hideButton()
-                                    viewModel.translateWord(recipe)
+                                    viewModel.translateWord(ingredients)
                                     break
                                 }
                             }
@@ -126,6 +151,42 @@ class SearchRecipeFragment : BaseFragment(R.layout.fragment_search_recipe) {
                     ).show()
                 }
             }
+
+            R.id.customizeSearchTitle->{
+                if(advancedSettingSearch!=null){
+                    AdvancedSearchSettingsDialog(
+                        this,
+                        advancedSettingSearch
+                    ).show(parentFragmentManager, "AdvancedSearchSettingsDialog")
+                }
+                else{
+                    AdvancedSearchSettingsDialog(this).show(
+                        parentFragmentManager,
+                        "AdvancedSearchSettingsDialog"
+                    )
+                }
+            }
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        if(advancedSettingSearch!=null){
+            outState.putParcelable(
+                keyAdvancedSettingSearch,
+                DataAdvancedSearchParcelize.createDataAdvancedSearchParcelize(
+                    advancedSettingSearch!!
+                )
+            )
+        }
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun closeDialog(selectedData: DataAdvancedSearch) {
+        advancedSettingSearch = selectedData
+        Log.d("testDialog", advancedSettingSearch.toString())
+    }
+
+    companion object{
+        private const val keyAdvancedSettingSearch = "keyAdvancedSettingSearch"
     }
 }

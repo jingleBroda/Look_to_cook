@@ -7,7 +7,7 @@
     <string name="fat_string">Жиры</string>
     <string name="carb_string">Углеводы</string>
     <string name="default_weight_string">0 мг</string>
-    <string name="kcal_string">ккал</string>
+    <string name="kcal_string">Ккал. в одной порции:</string>
     <string name="details_string"><u>Подробнее…</u></string>
     <string name="looking_recipe_string">Рецепт</string>
     <string name="servings_string">Число порций:</string>
@@ -23,8 +23,21 @@
     <string name="for_recipes_string">За рецептами!</string>
     <string name="search_screen_title">Поиск рецептов</string>
     <string name="show_recipe_screen_title">Результат поиска</string>
-    <string name="bad_search_recipe_string">"Ошибка поиска рецептов, попробуйте использовтаь другую комбинацию ингредиентов "</string>
+    <string name="bad_search_recipe_string">Ой, кажеться мы для вас ничего не нашли. Может изменим список продуктов?</string>
     <string name="ingredient_string">Ингредиент</string>
     <string name="copy_text_string">Текст экрана успешно скопирован. При открытии переводчика, просто скопируйте текст в поле английского языка.</string>
     <string name="internet_connection_error_string">Упс, похоже у вас отсутствует подключение к интернету. Попробуйте зайти в приложение позднее!</string>
+    <string-array name="diet_name_array">
+        <item>Сбалансированная</item>
+        <item>Высокобелковая</item>
+        <item>Высоковолокнистая</item>
+        <item>Низкожирная</item>
+        <item>Низкоуглеводная</item>
+        <item>Низконатриевая</item>
+    </string-array>
+    <string name="advanced_search_string">Расширенный поиск</string>
+    <string name="suitable_for_diet_string">Подходит для диеты:</string>
+    <string name="save_string">Сохранить</string>
+    <string name="clear_string">Очистить</string>
+    <string name="customize_search_string">Настроить поиск</string>
 </resources>

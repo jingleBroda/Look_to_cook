@@ -6,7 +6,7 @@
     <string name="fat_string">Fat</string>
     <string name="carb_string">Carb</string>
     <string name="default_weight_string">0 mg</string>
-    <string name="kcal_string">kcal</string>
+    <string name="kcal_string">Kcal in one serving:</string>
     <string name="example_number_string" translatable="false">1000</string>
     <string name="details_string"><u>Details…</u></string>
     <string name="looking_recipe_string">Recipe</string>
@@ -24,8 +24,32 @@
     <string name="enumeration_symbol" translatable="false">•</string>
     <string name="search_screen_title">Search Recipe</string>
     <string name="show_recipe_screen_title">Result recipe</string>
-    <string name="bad_search_recipe_string">Search recipe error, plz try other combination ingredients</string>
+    <string name="bad_search_recipe_string">Oops, looks like we couldn\'t find anything for you. Would you like to change the list of products?</string>
     <string name="ingredient_string">Ingredient</string>
     <string name="copy_text_string">Screen text copied successfully. When opening the translator, just copy the text in the English language field.</string>
     <string name="internet_connection_error_string">Oops, it seems like you have no internet connection. Please try accessing the application later!</string>
+    <string name="range_separator" translatable="false">-</string>
+    <string name="advanced_search_string">Advanced search</string>
+    <string-array name="diet_name_array">
+        <item>Balanced</item>
+        <item>High-Protein</item>
+        <item>High-Fiber</item>
+        <item>Low-Fat</item>
+        <item>Low-Carb</item>
+        <item>Low-Sodium</item>
+    </string-array>
+    <string-array name="diet_name_only_eng_array">
+        <item>balanced</item>
+        <item>high-protein</item>
+        <item>high-fiber</item>
+        <item>low-fat</item>
+        <item>low-carb</item>
+        <item>low-sodium</item>
+    </string-array>
+    <string name="example_number_2_string" translatable="false">100</string>
+    <string name="example_number_3_string" translatable="false">200</string>
+    <string name="suitable_for_diet_string">Suitable for a diet:</string>
+    <string name="save_string">Save</string>
+    <string name="clear_string">Clear</string>
+    <string name="customize_search_string">Customize search</string>
 </resources>

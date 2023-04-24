@@ -12,7 +12,6 @@ import com.jinglebroda.presentation.R
 import com.jinglebroda.presentation.databinding.RecipeItemViewV2Binding
 import com.jinglebroda.presentation.singleActivity.mvvm.fragment.showRecipe.recViewAdapter.viewHolder.ingredientsAdapter.IngredientsListViewAdapter
 
-
 class RecipeViewHolder(
     private val binding:RecipeItemViewV2Binding,
     private val insideOnCLickListener:View.OnClickListener
@@ -71,6 +70,7 @@ class RecipeViewHolder(
         when(v.id){
             R.id.showRecipeButton->{
                 //TODO и тут тоже ошибка error: android.os.TransactionTooLargeException
+                Log.d("UrlCheck", Uri.parse(v.tag as String).toString())
                 val builder = CustomTabsIntent.Builder()
                 val customTabsIntent = builder.build()
                 customTabsIntent.launchUrl(v.context, Uri.parse(v.tag as String))

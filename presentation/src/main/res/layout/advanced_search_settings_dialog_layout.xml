@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/alter_grey">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/clearRangeKcal">
+
+                <EditText
+                    android:id="@+id/caloriesFirstLimitEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:autofillHints=""
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="@string/example_number_2_string"
+                    android:inputType="number"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/darkGrey" />
+
+                <TextView
+                    android:id="@+id/calorieSeparator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="@string/range_separator"
+                    android:textColor="@color/darkGrey"
+                    android:textSize="34sp" />
+
+                <EditText
+                    android:id="@+id/caloriesLastLimitEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:autofillHints=""
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="@string/example_number_3_string"
+                    android:inputType="number"
+                    android:textColor="@color/black"
+                    android:textColorHint="#757575" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/dietListRecView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="32dp"
+                app:layout_constraintBottom_toTopOf="@+id/saveButtonAdvancedSearch"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                tools:itemCount="6"
+                tools:listitem="@layout/diet_itemview" />
+
+            <TextView
+                android:id="@+id/caloriesTitleAdvancedSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kcal_string"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout" />
+
+            <Button
+                android:id="@+id/saveButtonAdvancedSearch"
+                style="@style/AppDefaultButtonsStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/save_string"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/suitable_for_diet_string"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/dietListRecView"
+                app:layout_constraintStart_toStartOf="@+id/dietListRecView" />
+
+            <TextView
+                android:id="@+id/titleAdvancedSearchDialog"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/alterGreen"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="@string/advanced_search_string"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/clearRangeKcal"
+                style="@style/AppDefaultButtonsStyle"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/clear_string"
+                android:textSize="8sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/caloriesTitleAdvancedSearch"
+                app:layout_constraintTop_toBottomOf="@+id/titleAdvancedSearchDialog" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

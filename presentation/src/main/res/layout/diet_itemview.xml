@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:padding="8dp"
+    android:layout_gravity="center"
+    android:layout_height="wrap_content">
+
+    <ToggleButton
+        android:id="@+id/dietToggleButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/diet_itemview_button_background"
+        android:fontFamily="sans-serif-black"
+        android:padding="24dp"
+        android:textColor="@color/text_color_diet_itemview"
+        android:textSize="10sp"
+        tools:text="название диеты"
+        tools:textOff="название диеты"
+        tools:textOn="название диеты" />
+</FrameLayout>

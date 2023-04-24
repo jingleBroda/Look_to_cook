@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jinglebroda.domain.model.searchRecipeModel.Hits
 import com.jinglebroda.domain.model.searchRecipeModel.Recipe
+import com.jinglebroda.domain.model.searchRecipeModel.advancedSearchGetParams.AdvancedSearchGetParams
 import com.jinglebroda.domain.model.translateWordModel.TranslateWordResponse
 import com.jinglebroda.presentation.R
 import com.jinglebroda.presentation.databinding.FragmentShowRecipeBinding
@@ -92,7 +93,11 @@ class ShowRecipeFragment : BaseFragment(R.layout.fragment_show_recipe), SearchVi
                 viewModel.translateFlow.collect{ translateResponse->
                     if(translateResponse != TranslateWordResponse.createEmptyResponse()){
                         viewModel.searchRecipe(
-                            translateResponse.responseData.translatedText
+                            AdvancedSearchGetParams(
+                                translateResponse.responseData.translatedText,
+                                null,
+                                null
+                            )
                         )
                     }
                 }
@@ -106,16 +111,20 @@ class ShowRecipeFragment : BaseFragment(R.layout.fragment_show_recipe), SearchVi
         for(i in recipe){
             if(LetterRusAndEngLanguage.isEnglishLetter(i)){
                 //если символ англ. делаем поиск запроса сразу
-                Log.d("testFirsLetterRecipe", "En")
                 searchHandler.searchRecipe()
-                viewModel.searchRecipe(recipe)
+                viewModel.searchRecipe(
+                    AdvancedSearchGetParams(
+                        recipe,
+                        null,
+                        null
+                    )
+                )
                 closeKeyBoard(binding.searchRecipeView.windowToken)
                 break
             }
             else{
                 if(LetterRusAndEngLanguage.isRussianLetter(i)){
                     //если на русском, считаем, что поиск идет на русском языке, значит переводим вводимый текст на англ и только потом делаем поиск
-                    Log.d("testFirsLetterRecipe", "Ru")
                     searchHandler.searchRecipe()
                     viewModel.translateWord(recipe)
                     closeKeyBoard(binding.searchRecipeView.windowToken)

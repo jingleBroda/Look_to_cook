@@ -3,6 +3,7 @@
     <item
         android:drawable="@drawable/button_active_background"
         android:state_enabled="true"/>
+
     <item
         android:drawable="@drawable/button_nonactive_background"
         android:state_enabled="false"/>

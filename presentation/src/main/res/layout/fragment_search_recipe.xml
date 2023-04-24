@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/alter_grey"
-    tools:context=".singleActivity.mvvm.fragment.searchRecipe.SearchRecipeFragment" >
+    tools:context=".singleActivity.mvvm.fragment.searchRecipe.SearchRecipeFragment">
 
     <ImageView
         android:id="@+id/searchScreenExpandedLogo"
@@ -37,7 +37,7 @@
         style="@style/AppDefaultButtonsStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="16dp"
         android:padding="16dp"
         android:text="@string/for_recipes_string"
         android:textSize="16sp"
@@ -65,13 +65,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleSearchRecipeScreen" />
+        app:layout_constraintTop_toBottomOf="@+id/customizeSearchTitle" />
 
     <TextView
         android:id="@+id/bottomTextSearchRecipeScreen"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="24dp"
         android:text="@string/bottom_search_recipe_string"
         android:textColor="@color/backgroundButton"
         app:layout_constraintBottom_toTopOf="@+id/searchRecipeButton"
@@ -82,13 +82,13 @@
         android:id="@+id/titleSearchRecipeScreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/product_list_string"
         android:textColor="@color/backgroundButton"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -103,4 +103,13 @@
         app:layout_constraintEnd_toEndOf="@+id/searchRecipeButton"
         app:layout_constraintStart_toStartOf="@+id/searchRecipeButton"
         app:layout_constraintTop_toTopOf="@+id/searchRecipeButton" />
+
+    <TextView
+        android:id="@+id/customizeSearchTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/customize_search_string"
+        android:textColor="@color/darkGrey"
+        app:layout_constraintEnd_toEndOf="@+id/inputFieldIngredients"
+        app:layout_constraintTop_toBottomOf="@+id/titleSearchRecipeScreen" />
 </androidx.constraintlayout.widget.ConstraintLayout>

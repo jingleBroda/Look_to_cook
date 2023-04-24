@@ -4,7 +4,7 @@ import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-//Данный декоратор вынужденная мера, по скольку ресайклер экрана с конкретным чеком на отрез отказался работать с LinerLayoutManager!!!!!!
+//Данный декоратор вынужденная мера, по скольку ресайклер на отрез отказался работать с LinerLayoutManager!!!!!!
 class GridSpacingItemDecoration(
     private val spanCount: Int,
     private val spacing: Int,
