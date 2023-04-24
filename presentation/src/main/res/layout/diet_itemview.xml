@@ -12,10 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/diet_itemview_button_background"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="@font/poppins_bold"
         android:padding="24dp"
         android:textColor="@color/text_color_diet_itemview"
-        android:textSize="10sp"
+        android:textSize="12sp"
         tools:text="название диеты"
         tools:textOff="название диеты"
         tools:textOn="название диеты" />

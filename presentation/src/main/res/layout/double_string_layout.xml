@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:fontFamily="@font/poppins"
         android:textColor="@color/darkGrey"
         android:textSize="14sp"
         tools:text="Имя/Название/Наименование" />
@@ -19,8 +20,9 @@
         android:id="@+id/valueInDoubleString"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="end"
         android:layout_weight="1"
+        android:fontFamily="@font/poppins"
+        android:gravity="end"
         android:textColor="@color/darkGrey"
         android:textSize="14sp"
         tools:text="Вес/Число штук" />

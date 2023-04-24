@@ -19,8 +19,8 @@ android {
         applicationId "com.jinglebroda.looktocook"
         minSdk 24
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        versionCode 3 //для Google Play
+        versionName "1.2" //для пользователей
 
         buildConfigField("String", "APP_ID", "$EDAMAM_APP_ID")
         buildConfigField("String", "APP_KEY", "$EDAMAM_APP_KEY")

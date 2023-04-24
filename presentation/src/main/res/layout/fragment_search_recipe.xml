@@ -37,7 +37,8 @@
         style="@style/AppDefaultButtonsStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/poppins"
         android:padding="16dp"
         android:text="@string/for_recipes_string"
         android:textSize="16sp"
@@ -50,11 +51,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
         android:background="@color/white"
         android:ems="10"
+        android:fontFamily="@font/poppins"
         android:gravity="top"
         android:hint="@string/example_range_ingridient"
         android:inputType="textMultiLine"
@@ -71,7 +71,8 @@
         android:id="@+id/bottomTextSearchRecipeScreen"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/poppins"
         android:text="@string/bottom_search_recipe_string"
         android:textColor="@color/backgroundButton"
         app:layout_constraintBottom_toTopOf="@+id/searchRecipeButton"
@@ -80,36 +81,53 @@
 
     <TextView
         android:id="@+id/titleSearchRecipeScreen"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:fontFamily="sans-serif-black"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/poppins_bold"
         android:text="@string/product_list_string"
         android:textColor="@color/backgroundButton"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/customizeSearchImg"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.501" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
+        android:layout_marginTop="10dp"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/searchRecipeButton"
         app:layout_constraintEnd_toEndOf="@+id/searchRecipeButton"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="@+id/searchRecipeButton"
-        app:layout_constraintTop_toTopOf="@+id/searchRecipeButton" />
+        app:layout_constraintTop_toTopOf="@+id/searchRecipeButton"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/customizeSearchTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins"
         android:text="@string/customize_search_string"
-        android:textColor="@color/darkGrey"
+        android:textColor="@color/backgroundButton"
         app:layout_constraintEnd_toEndOf="@+id/inputFieldIngredients"
         app:layout_constraintTop_toBottomOf="@+id/titleSearchRecipeScreen" />
+
+    <ImageView
+        android:id="@+id/customizeSearchImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_customize_search"
+        app:layout_constraintBottom_toTopOf="@+id/customizeSearchTitle"
+        app:layout_constraintEnd_toEndOf="@+id/customizeSearchTitle"
+        app:layout_constraintStart_toStartOf="@+id/customizeSearchTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -54,11 +54,13 @@ class SearchRecipeFragment : BaseFragment(R.layout.fragment_search_recipe),
         searchHandler = SearchProcessingHandler.Base(
             binding.progressBar,
             binding.searchRecipeButton,
-            binding.customizeSearchTitle
+            binding.customizeSearchTitle,
+            binding.customizeSearchImg
         )
         with(binding){
             searchRecipeButton.setOnClickListener(this@SearchRecipeFragment)
             customizeSearchTitle.setOnClickListener(this@SearchRecipeFragment)
+            customizeSearchImg.setOnClickListener(this@SearchRecipeFragment)
 
             inputFieldIngredients.setHorizontallyScrolling(false)
             inputFieldIngredients.maxLines = Integer.MAX_VALUE
@@ -152,7 +154,7 @@ class SearchRecipeFragment : BaseFragment(R.layout.fragment_search_recipe),
                 }
             }
 
-            R.id.customizeSearchTitle->{
+            R.id.customizeSearchTitle, R.id.customizeSearchImg->{
                 if(advancedSettingSearch!=null){
                     AdvancedSearchSettingsDialog(
                         this,
