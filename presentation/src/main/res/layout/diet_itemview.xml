@@ -10,12 +10,12 @@
     <ToggleButton
         android:id="@+id/dietToggleButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@drawable/diet_itemview_button_background"
-        android:fontFamily="@font/poppins_bold"
+        android:fontFamily="sans-serif-condensed"
         android:padding="24dp"
         android:textColor="@color/text_color_diet_itemview"
-        android:textSize="12sp"
+        android:textSize="8sp"
         tools:text="название диеты"
         tools:textOff="название диеты"
         tools:textOn="название диеты" />
