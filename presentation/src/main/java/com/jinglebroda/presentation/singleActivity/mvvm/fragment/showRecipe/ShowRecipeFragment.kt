@@ -5,7 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jinglebroda.domain.model.searchRecipeModel.Hits
@@ -31,17 +31,15 @@ import javax.inject.Inject
 class ShowRecipeFragment : BaseFragment(R.layout.fragment_show_recipe), SearchView.OnQueryTextListener{
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-    private lateinit var viewModel: ShowRecipeFragmentViewModel
+    private val viewModel by viewModels<ShowRecipeFragmentViewModel>{
+        viewModelFactory
+    }
     private lateinit var binding:FragmentShowRecipeBinding
     private lateinit var adapterRecView:RecipeRecViewAdapter
     private lateinit var searchHandler:SearchRecipesHandler.Base
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding = FragmentShowRecipeBinding.bind(view)
-        viewModel = ViewModelProvider(
-            this,
-            viewModelFactory
-        )[ShowRecipeFragmentViewModel::class.java]
         adapterRecView = RecipeRecViewAdapter(this)
         with(binding){
             searchHandler = SearchRecipesHandler.Base(

@@ -13,7 +13,7 @@ android {
             keyPassword 'slark13377'
         }
     }
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.jinglebroda.looktocook"

@@ -6,7 +6,7 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.jinglebroda.domain.model.searchRecipeModel.Hits
 import com.jinglebroda.domain.model.translateWordModel.TranslateWordResponse
@@ -34,7 +34,9 @@ class SearchRecipeFragment : BaseFragment(R.layout.fragment_search_recipe),
     AdvancedSearchSettingsDialogCloseListener {
     @Inject
     lateinit var viewModelFactory:ViewModelFactory
-    private lateinit var viewModel: SearchRecipeFragmentViewModel
+    private val viewModel by viewModels<SearchRecipeFragmentViewModel>{
+        viewModelFactory
+    }
     private lateinit var binding: FragmentSearchRecipeBinding
     private lateinit var searchHandler: SearchProcessingHandler
     private var advancedSettingSearch:DataAdvancedSearch? = null
@@ -47,10 +49,6 @@ class SearchRecipeFragment : BaseFragment(R.layout.fragment_search_recipe),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding = FragmentSearchRecipeBinding.bind(view)
-        viewModel = ViewModelProvider(
-            this,
-            viewModelFactory
-        )[SearchRecipeFragmentViewModel::class.java]
         searchHandler = SearchProcessingHandler.Base(
             binding.progressBar,
             binding.searchRecipeButton,

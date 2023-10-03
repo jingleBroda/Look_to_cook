@@ -63,7 +63,6 @@ class AdvancedSearchSettingsDialog(
                 )
             }
 
-
             saveButtonAdvancedSearch.setOnClickListener{
                 dismiss()
             }

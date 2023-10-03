@@ -2,7 +2,7 @@ package com.jinglebroda.presentation.singleActivity.mvvm.fragment.main
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.jinglebroda.presentation.R
 import com.jinglebroda.presentation.databinding.FragmentMainBinding
 import com.jinglebroda.presentation.singleActivity.mvvm.activityContract.navigator
@@ -15,16 +15,11 @@ import javax.inject.Inject
 class MainFragment : BaseFragment(R.layout.fragment_main) {
     @Inject
     lateinit var viewModelFactory:ViewModelFactory
-    private lateinit var viewModel:MainFragmentViewModel
+    private val viewModel by viewModels<MainFragmentViewModel> { viewModelFactory }
     private lateinit var binding:FragmentMainBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding = FragmentMainBinding.bind(view)
-        viewModel = ViewModelProvider(
-            this,
-            viewModelFactory
-        )[MainFragmentViewModel::class.java]
-
         binding.openSearchScreenButton.setOnClickListener(this@MainFragment)
         super.onViewCreated(view, savedInstanceState)
     }
@@ -34,5 +29,4 @@ class MainFragment : BaseFragment(R.layout.fragment_main) {
             R.id.openSearchScreenButton-> navigator().next(SearchRecipeFragment())
         }
     }
-
 }
